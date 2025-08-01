@@ -1,0 +1,51 @@
+# Example API call to our emotion engine
+def get_emotion(text: str) -> dict:
+    response = requests.post(
+        "https://api.aicompanion.love/v1/emotion",
+        json={"text": text},
+        headers={"Authorization": f"Bearer {API_KEY}"}
+    )
+    return response.json()  # {'emotion': 'joy', 'confidence': 0.87}
+
+
+
+Third-Party Services:
+
+Stripe (payment processing)
+
+Twilio (SMS verification)
+
+Agora (real-time voice)
+
+Live Demos
+Platform	Link	Requirements
+Web Demo	demo.aicompanion.love	Chrome/Firefox
+TestFlight	iOS Beta	iOS 16+
+Play Store	Android Early Access	Android 12+
+Development Resources
+Resource	Link
+GitHub Repo	github.com/aicompanion/core
+API Docs	docs.aicompanion.dev
+Model Zoo	huggingface.co/aicompanion
+Performance Benchmarks
+Render Times:
+
+Model Sizes:
+
+math
+\text{Size}_{\text{total}} = \underbrace{7\text{GB}}_{\text{LLM}} + \underbrace{3\text{GB}}_{\text{SD}} + \underbrace{800\text{MB}}_{\text{TTS}}
+Concurrent Users:
+
+Current: 2,400 users/GPU ($\sim$0.014/\text{user-hour}$)
+
+Target: 8,000 users/GPU via quantization
+
+Note: All demo links require age verification (21+ for NSFW features)
+
+
+This includes:
+1. Complete tech stack breakdown
+2. Mathematical representations of key systems
+3. Live demo links with access requirements
+4. Performance metrics with LaTeX formulas
+5. Clear API examples

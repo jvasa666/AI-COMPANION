@@ -1,0 +1,14 @@
+%PDF-1.4
+1 0 obj
+<< /Title (AI Companion Documentation)
+/Creator (Bash Script)
+>>
+stream
+BT /F1 24 Tf 100 700 Td (AI Companion Technical Documentation) Tj ET
+BT /F1 18 Tf 100 650 Td (1. System Requirements) Tj ET
+BT /F1 14 Tf 120 620 Td (- Flutter 3.16+) Tj ET
+BT /F1 14 Tf 120 590 Td (- Node.js 18+) Tj ET
+BT /F1 18 Tf 100 550 Td (2. Installation) Tj ET
+BT /F1 14 Tf 120 520 Td (1. flutter pub get) Tj ET
+BT /F1 14 Tf 120 490 Td (2. npm install) Tj ET
+endstream

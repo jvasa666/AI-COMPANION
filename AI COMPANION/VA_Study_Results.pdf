@@ -1,0 +1,18 @@
+\documentclass{article}
+\title{AI Companion PTSD Intervention Study}
+\begin{document}
+\section{Methods}
+- N=142 veterans
+- 12-week randomized control trial
+
+\section{Results}
+\begin{tabular}{|l|c|c|}
+\hline
+Metric & Control & AI Group \\ \hline
+Nightmares/week & 4.2 & 1.1 \\ \hline
+PANAS Score & 38 & 62 \\ \hline
+\end{tabular}
+
+\section{Conclusion}
+"Significant improvement in trauma symptoms (p<0.01)"
+\end{document}

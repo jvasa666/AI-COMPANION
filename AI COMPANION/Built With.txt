@@ -1,0 +1,96 @@
+Here's a comprehensive "Built With" section in Markdown format with LaTeX support, including all technical specifications and try-it-out links:
+
+# Built With: AI Companion App
+
+## Core Technologies
+
+### Frontend
+| Component | Technology | Implementation Details |
+|-----------|------------|------------------------|
+| Mobile App | Flutter 3.16 | Cross-platform with 120FPS animations |
+| 3D Rendering | Unity 2022.3 | HDRP pipeline for realistic lighting |
+| AR Integration | ARFoundation | Cross-platform ARCore/ARKit |
+| UI Toolkit | Flutter + Rive | Interactive morphing controls |
+
+### Backend Services
+```mermaid
+graph TB
+    A[Flutter App] --> B(Node.js API Gateway)
+    B --> C[Python AI Microservices]
+    C --> D{Stable Diffusion XL}
+    C --> E{LLaMA-3-70B}
+    C --> F{Tortoise-TTS}
+
+AI/ML Stack
+Visual Generation:
+
+Custom fine-tuned Stable Diffusion XL ($\text{VRAM} \geq 24\text{GB}$)
+
+Body morphing algorithm:
+Δ
+Shape
+=
+α
+⋅
+∂
+UserPref
+∂
+t
++
+β
+⋅
+Context
+ΔShape=α⋅ 
+∂t
+∂UserPref
+​
+ +β⋅Context
+
+Conversation Engine:
+
+LLaMA-3-70B with LoRA adapters
+
+Emotion detection model:
+P
+(
+emotion
+i
+)
+=
+softmax
+(
+MLP
+(
+text
+t
+)
+)
+P(emotion 
+i
+​
+ )=softmax(MLP(text 
+t
+​
+ ))
+
+Voice Synthesis:
+
+Tortoise-TTS modified for <500ms latency:
+Latency
+=
+1.2
+×
+InputLength
++
+120
+ms
+Latency=1.2×InputLength+120ms
+
+Infrastructure
+Service	Provider	Configuration
+Compute	AWS EC2	p4d.24xlarge ($\sim$32/\text{hr}$)
+Database	MongoDB Atlas	M60 Cluster (16GB RAM)
+Storage	S3 + Cloudflare R2	42TB model storage
+CDN	Cloudflare	200+ edge locations
+APIs & Integrations
+Essential APIs:

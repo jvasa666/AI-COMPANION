@@ -1,0 +1,37 @@
+Image Gallery
+(All images optimized for investor presentations at 3:2 ratio, <5MB each)
+
+1. App Screenshots
+File	Description	Dimensions	Format
+ui_customization.jpg	Avatar body customization interface	3000×2000px	JPG (4.2MB)
+ar_demo.gif	AR companion in room environment	1800×1200px	GIF (3.8MB)
+voice_settings.png	Voice cloning configuration panel	3000×2000px	PNG (4.7MB)
+2. Technical Diagrams
+File	Description	Dimensions	Format
+architecture.jpg	System architecture overview	3000×2000px	JPG (4.5MB)
+morphing_tech.png	Body parameter interpolation	3000×2000px	PNG (4.1MB)
+3. User Flow
+File	Description	Dimensions	Format
+onboarding_flow.jpg	Step-by-step setup process	3000×2000px	JPG (3.9MB)
+therapy_mode.gif	Mental health interaction demo	1800×1200px	GIF (4.9MB)
+Optimization Tips
+For JPGs:
+
+bash
+convert input.png -quality 85 -resize 3000x2000 -sampling-factor 4:2:0 output.jpg
+Reduces file size while maintaining 3:2 ratio
+
+For GIFs:
+
+bash
+ffmpeg -i input.mp4 -vf "fps=15,scale=1800:1200" -loop 0 output.gif
+Limits to 15 FPS for smaller files
+
+For PNGs:
+
+bash
+pngquant --quality=80-95 --speed=1 --output output.png input.png
+Sample Image (Placeholder)
+https://via.placeholder.com/3000x2000/363636/FFFFFF?text=AI+Companion+Customization+Screen
+Example 3:2 ratio placeholder (replace with actual screenshots)
+
